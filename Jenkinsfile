@@ -1,4 +1,4 @@
-node('docker'){
+node(){
     def nginx_repo = "lokeshkamalay/nginx:latest"
     def tomcat_repo = "lokeshkamalay/tomcat"
 
