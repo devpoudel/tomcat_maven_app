@@ -16,14 +16,14 @@ node(){
     }
     
     stage('Prepare the Image'){
-       // docker.withRegistry('','docker-hub') {
+       docker.withRegistry('','docker-hub') {
         def customImage = docker.build("$tomcat_repo:${env.BUILD_ID}")
-		withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'docker_password ', usernameVariable: 'docker_user ')]) {
-               sh "docker login --username=$docker_user --password=$docker_password"
-		customImage.push()
-             }
+		//withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'docker_password ', usernameVariable: 'docker_user ')]) {
+               //sh "docker login --username=$docker_user --password=$docker_password"
+		//customImage.push()
+            // }
        
-       // }
+        }
     }
     
     stage('Deploy'){
