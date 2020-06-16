@@ -9,6 +9,7 @@ node(){
     stage('Build'){
 	  
 	    sh "yum -y install docker"
+	    sh "systemctl start docker"
         docker.image('maven:latest').inside(){
             sh "mvn clean package"
         }
