@@ -7,6 +7,7 @@ node('docker'){
     }
     
     stage('Build'){
+	    sh "yum -y install docker"
         docker.image('maven:latest').inside(){
             sh "mvn clean package"
         }
