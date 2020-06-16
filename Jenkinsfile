@@ -18,7 +18,10 @@ node(){
     stage('Prepare the Image'){
         docker.withRegistry('','docker-hub') {
         def customImage = docker.build("$tomcat_repo:${env.BUILD_ID}")
-        customImage.push()
+		withCredentials([usernameColonPassword(credentialsId: 'dockerhub', variable: '')]) {
+                customImage.push()
+             }
+       
         }
     }
     
